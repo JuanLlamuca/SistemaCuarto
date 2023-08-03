@@ -17,6 +17,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".DetallePrestamo"
+            android:exported="false" />
+        <activity
+            android:name=".Principal"
+            android:exported="false" />
+        <activity
             android:name=".Login"
             android:exported="false" />
         <activity

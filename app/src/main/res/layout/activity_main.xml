@@ -22,7 +22,7 @@
         app:cornerRadius="15dp" />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_lg"
         android:layout_width="308dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
