@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A9CDCA"
+    tools:context=".RegistrarUsuario">
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="116dp"
+        android:layout_height="47dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="674dp"
+        android:backgroundTint="#2439AE"
+        android:onClick="finalizar"
+        android:text="Regresar"
+        app:cornerRadius="15dp" />
+
+    <EditText
+        android:id="@+id/txt_correo"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="319dp"
+        android:ems="10"
+        android:hint="Correo electrónico"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/txt_direccion"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="421dp"
+        android:ems="10"
+        android:hint="Dirección"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/txt_clave"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-2dp"
+        android:layout_marginTop="480dp"
+        android:layout_marginEnd="0dp"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/txt_apellidos"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="261dp"
+        android:layout_marginEnd="0dp"
+        android:ems="10"
+        android:hint="Apellidos"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="127dp"
+        android:layout_marginTop="89dp"
+        android:text="SERVICOM"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="32dp" />
+
+    <EditText
+        android:id="@+id/txt_cedula"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="-4dp"
+        android:ems="10"
+        android:hint="Cédula"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/txt_telefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="379dp"
+        android:layout_marginEnd="-3dp"
+        android:ems="10"
+        android:hint="teléfono"
+        android:inputType="phone" />
+
+    <Button
+        android:id="@+id/btn_guardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="138dp"
+        android:layout_marginBottom="118dp"
+        android:backgroundTint="#1A611C"
+        android:text="Registrar usuario"
+        app:cornerRadius="15dp" />
+    <TextView
+        android:id="@+id/errorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/txt_nombres"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="205dp"
+        android:ems="10"
+        android:hint="Nombres"
+        android:inputType="text" />
+
+
+
+</RelativeLayout>
