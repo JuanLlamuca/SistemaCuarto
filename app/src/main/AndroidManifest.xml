@@ -29,9 +29,6 @@
             android:name=".RegistrarUsuario"
             android:exported="false" />
         <activity
-            android:name=".Mostrar"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

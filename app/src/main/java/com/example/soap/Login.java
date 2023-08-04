@@ -1,5 +1,6 @@
 package com.example.soap;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ClipData;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -35,7 +37,7 @@ public class Login extends AppCompatActivity {
 
     EditText et_correo, et_clave;
     Button Btnlog;
-    RequestQueue requestQueue;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,58 +50,44 @@ public class Login extends AppCompatActivity {
 
         Btnlog.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                consultaLogin("https://prestamocomputadora.000webhostapp.com/pruebasoap/ajax/login.php?op=log");
+                validarUsuario("https://prestamocomputadora.000webhostapp.com/pruebasoap/validar_usuario.php");
             }
         });
     }
 
-    public void consultaLogin(String URL) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.d("RESPONSE", response);
 
-                        try {
-                            boolean recibeRespuesta = Boolean.parseBoolean(response);
-                            if (recibeRespuesta) {
-                                // Inicio de sesión exitoso
-                                Toast.makeText(getApplicationContext(), "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
-                                // Ir al menú
-                                Intent intent = new Intent(getApplicationContext(), Principal.class);
-                                startActivity(intent);
-                            } else {
-                                // Inicio de sesión fallido
-                                Toast.makeText(getApplicationContext(), "Inicio de sesión fallido", Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            // Error al analizar la respuesta JSON
-                            Toast.makeText(getApplicationContext(), "Error en la respuesta del servidor", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Error en la conexión", Toast.LENGTH_SHORT).show();
-                    }
-                }) {
+
+    private void validarUsuario(String URL){
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> parametros = new HashMap<>();
-                String correo = et_correo.getText().toString();
-                String clave = et_clave.getText().toString();
-                parametros.put("correo", correo);
-                parametros.put("clave", clave);
+            public void onResponse(String response) {
+                if(!response.isEmpty()){
+                    Intent intent=new Intent(getApplicationContext(),Principal.class);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(Login.this, "Correo o clave incorrectos", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(Login.this,error.toString(),Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parametros=new HashMap<String,String>();
+                parametros.put("correo",et_correo.getText().toString());
+                parametros.put("clave",et_clave.getText().toString());
                 return parametros;
             }
         };
-        requestQueue = Volley.newRequestQueue(this);
+        RequestQueue requestQueue=Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
-
-
 
 
 

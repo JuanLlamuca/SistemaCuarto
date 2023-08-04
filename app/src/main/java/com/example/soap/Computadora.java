@@ -5,6 +5,10 @@ public class Computadora {
     private String com_marca;
     private String com_so;
 
+    public Computadora() {
+
+    }
+
     public Computadora(String com_serie, String com_marca, String com_so) {
         this.com_serie = com_serie;
         this.com_marca = com_marca;
