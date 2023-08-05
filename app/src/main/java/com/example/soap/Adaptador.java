@@ -29,8 +29,8 @@ public class Adaptador extends ArrayAdapter<Computadora> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.my_list_item,null,true);
-        TextView tvid=view.findViewById(R.id.tvid);
-        TextView tvnombre=view.findViewById(R.id.tvnombre);
+        TextView tvid=view.findViewById(R.id.txt_id);
+        TextView tvnombre=view.findViewById(R.id.txt_nombre);
 
         tvid.setText(arrayalistaComputadoras.get(position).getCom_serie());
         tvnombre.setText(arrayalistaComputadoras.get(position).getCom_marca());

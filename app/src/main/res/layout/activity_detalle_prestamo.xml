@@ -8,7 +8,7 @@
     tools:context=".DetallePrestamo">
 
     <EditText
-        android:id="@+id/editTextText5"
+        android:id="@+id/txtMarca"
         android:layout_width="193dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -16,11 +16,11 @@
         android:layout_marginTop="505dp"
         android:layout_marginEnd="28dp"
         android:ems="10"
-        android:inputType="text"
-        android:text="Name" />
+        android:hint="Marca"
+        android:inputType="text" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/txtRam"
         android:layout_width="193dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -29,11 +29,11 @@
         android:layout_marginTop="384dp"
         android:layout_marginEnd="28dp"
         android:ems="10"
-        android:inputType="text"
-        android:text="Name" />
+        android:hint="Ram"
+        android:inputType="text" />
 
     <EditText
-        android:id="@+id/editTextText4"
+        android:id="@+id/txtAlmacenamiento"
         android:layout_width="193dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -41,8 +41,8 @@
         android:layout_marginTop="446dp"
         android:layout_marginEnd="29dp"
         android:ems="10"
-        android:inputType="text"
-        android:text="Name" />
+        android:hint="Almacenamiento"
+        android:inputType="text" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -58,7 +58,7 @@
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/txtSerie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -66,8 +66,8 @@
         android:layout_marginTop="229dp"
         android:layout_marginEnd="-1dp"
         android:ems="10"
-        android:inputType="text"
-        android:text="Name" />
+        android:hint="serie"
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/t"
@@ -124,8 +124,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="369dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="415dp"
         android:text="Sistema operativo"
         android:textSize="20sp" />
 
@@ -135,8 +135,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="249dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="296dp"
         android:text="Almacenamiento"
         android:textSize="20sp" />
 
@@ -146,13 +146,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginBottom="187dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginBottom="237dp"
         android:text="Marca"
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/txtSO"
         android:layout_width="193dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -160,8 +160,8 @@
         android:layout_marginTop="326dp"
         android:layout_marginEnd="30dp"
         android:ems="10"
-        android:inputType="text"
-        android:text="Name" />
+        android:hint="so"
+        android:inputType="text" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -173,7 +173,7 @@
         app:srcCompat="@drawable/hp" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/btnPedir"
         android:layout_width="167dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -184,7 +184,7 @@
         android:text="Pedir" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/btnDevolver"
         android:layout_width="167dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -203,5 +203,17 @@
         android:backgroundTint="#2238B1"
         android:onClick="finalizar"
         android:text="Regresar" />
+
+    <EditText
+        android:id="@+id/txt_cedulaP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="182dp"
+        android:ems="10"
+        android:hint="cedula"
+        android:inputType="text" />
 
 </RelativeLayout>

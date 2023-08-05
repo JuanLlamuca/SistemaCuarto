@@ -7,6 +7,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -34,6 +35,7 @@ import java.util.Map;
 public class Login extends AppCompatActivity {
 
 
+    public String cedulaUsuario;
 
     EditText et_correo, et_clave;
     Button Btnlog;
@@ -47,10 +49,16 @@ public class Login extends AppCompatActivity {
         et_correo=findViewById(R.id.txtu);
         et_clave=findViewById(R.id.txtc);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null && extras.containsKey("per_cedula")) {
+            cedulaUsuario = extras.getString("per_cedula");
+            // Hacer lo que necesites con la cédula del usuario
+        }
+
 
         Btnlog.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                validarUsuario("https://prestamocomputadora.000webhostapp.com/pruebasoap/validar_usuario.php");
+                validarUsuario("https://prestamocomputadora.000webhostapp.com/pruebasoap/login.php");
             }
         });
     }
@@ -61,13 +69,30 @@ public class Login extends AppCompatActivity {
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(!response.isEmpty()){
-                    Intent intent=new Intent(getApplicationContext(),Principal.class);
-                    startActivity(intent);
-                }else {
+                if (!response.isEmpty()) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        // Suponiendo que la clave para la cédula en el JSON de respuesta es "per_cedula"
+                        String cedulaUsuario = jsonObject.getString("per_cedula");
+
+                        // Mostrar mensaje Toast con la cédula del usuario
+                        Toast.makeText(Login.this, "Cédula del usuario: " + cedulaUsuario, Toast.LENGTH_LONG).show();
+
+                        // Guardar la cédula en SharedPreferences
+                        SharedPreferences sharedPreferences = getSharedPreferences("MiPrefs", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("cedula_usuario", cedulaUsuario);
+                        editor.apply();
+
+                        Intent intent = new Intent(Login.this, Inicio.class);
+                        startActivity(intent);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Toast.makeText(Login.this, "Error en la respuesta del servidor", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
                     Toast.makeText(Login.this, "Correo o clave incorrectos", Toast.LENGTH_SHORT).show();
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override

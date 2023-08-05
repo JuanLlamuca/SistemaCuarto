@@ -2,9 +2,13 @@ package com.example.soap;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,10 +27,11 @@ import java.util.ArrayList;
 
 public class Principal extends AppCompatActivity {
 
-    private ListView list;
+     ListView listView;
     Adaptador adaptador;
     public static ArrayList<Computadora>computadoras=new ArrayList<>();
-    Button btn_cargar;
+
+    String url="https://prestamocomputadora.000webhostapp.com/pruebasoap/mostrar.php";
 
     Computadora compu;
     @Override
@@ -34,31 +39,45 @@ public class Principal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
-        list=findViewById(R.id.listView);
+        listView=findViewById(R.id.myListView);
         adaptador=new Adaptador(this,computadoras);
-        list.setAdapter(adaptador);
-        btn_cargar=findViewById(R.id.btn_cargars);
-        btn_cargar.setOnClickListener(new View.OnClickListener() {
+        listView.setAdapter(adaptador);
+        Log.d("Punto de control", "El método mostrarDatos() se llamó desde onCreate()");
+        mostrarDatos();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                mostrarDatos("https://prestamocomputadora.000webhostapp.com/pruebasoap/mostrar.php");
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Computadora computadoraSeleccionada = computadoras.get(position);
+                String numeroSerie = computadoraSeleccionada.getCom_serie();
+
+                SharedPreferences sharedPreferences = getSharedPreferences("MiPrefs", Context.MODE_PRIVATE);
+                String cedulaUsuario = sharedPreferences.getString("cedula_usuario", "");
+
+                Intent intent = new Intent(Principal.this, DetallePrestamo.class);
+                intent.putExtra("NUMERO_SERIE", numeroSerie);
+                intent.putExtra("cedula_usuario", cedulaUsuario);
+                startActivity(intent);
             }
         });
+
+
+
     }
 
-    public void mostrarDatos(String url){
-
+    public void mostrarDatos(){
         StringRequest request=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 computadoras.clear();
                 try {
                     JSONObject jsonObject=new JSONObject(response);
-                    String succes=jsonObject.getString("succes");
+                    String success=jsonObject.getString("success");
 
                     JSONArray jsonArray=jsonObject.getJSONArray("datos");
 
-                    if(succes.equals("i")){
+                    if(success.equals("1")){
 
                         for(int i=0;i<jsonArray.length();i++){
                             JSONObject object=jsonArray.getJSONObject(i);
@@ -72,11 +91,12 @@ public class Principal extends AppCompatActivity {
                         }
                     }
 
+                    // Punto de control 2: Verificar si los datos se recibieron correctamente y la cantidad de computadoras
+                    Log.d("Datos recibidos", "Cantidad de computadoras: " + computadoras.size());
+
                 }catch (JSONException e){
                     e.printStackTrace();
                 }
-
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -84,6 +104,7 @@ public class Principal extends AppCompatActivity {
                 Toast.makeText(Principal.this,error.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
+
         RequestQueue requestQueue=Volley.newRequestQueue(this);
         requestQueue.add(request);
     }
