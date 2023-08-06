@@ -63,11 +63,12 @@ public class RegistrarUsuario extends AppCompatActivity {
                 }
             }
         });
+
         nombres.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
                 if (!hasFocus) {
-                    validarNombreApellido(nombres.getText().toString(), errorTextView);
+                    validarNombreApellido(nombres, "Ingrese solo letras en el campo de nombres");
                 }
             }
         });
@@ -76,7 +77,7 @@ public class RegistrarUsuario extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
                 if (!hasFocus) {
-                    validarNombreApellido(apellidos.getText().toString(), errorTextView);
+                    validarNombreApellido(apellidos, "Ingrese solo letras en el campo de apellidos");
                 }
             }
         });
@@ -106,11 +107,11 @@ public class RegistrarUsuario extends AppCompatActivity {
                     return;
                 }
 
-                if (!validarNombreApellido(nombres.getText().toString(), errorTextView)) {
+                if (!validarNombreApellido(nombres, "Ingrese solo letras en el campo de nombres")) {
                     return;
                 }
 
-                if (!validarNombreApellido(apellidos.getText().toString(), errorTextView)) {
+                if (!validarNombreApellido(apellidos, "Ingrese solo letras en el campo de apellidos")) {
                     return;
                 }
                 if (!validarCorreo()) {
@@ -139,6 +140,7 @@ public class RegistrarUsuario extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.d("Server Response", response);
                 try {
                     // Convertir la respuesta JSON a un objeto JSON
                     JSONObject jsonObject = new JSONObject(response);
@@ -150,32 +152,48 @@ public class RegistrarUsuario extends AppCompatActivity {
                     // Código para manejar la respuesta del servidor
                     if (status.equals("success")) {
                         // Si el estado es "success", entonces la inserción fue exitosa
-                        cedula.setText("");
-                        nombres.setText("");
-                        apellidos.setText("");
-                        correo.setText("");
-                        telefono.setText("");
-                        direccion.setText("");
-                        clave.setText("");
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                cedula.setText("");
+                                nombres.setText("");
+                                apellidos.setText("");
+                                correo.setText("");
+                                telefono.setText("");
+                                direccion.setText("");
+                                clave.setText("");
 
-                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     } else {
                         // Si el estado es "error", hubo un problema en la inserción
                         Log.e("Error", message);
 
-                        TextView errorTextView = findViewById(R.id.errorTextView);
-                        errorTextView.setVisibility(View.VISIBLE);
-                        errorTextView.setText(message);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                TextView errorTextView = findViewById(R.id.errorTextView);
+                                errorTextView.setVisibility(View.VISIBLE);
+                                errorTextView.setText(message);
+                            }
+                        });
                     }
                 } catch (JSONException e) {
                     // Si ocurre un error al analizar la respuesta JSON
                     Log.e("Error", "Error al analizar la respuesta JSON: " + e.getMessage());
 
-                    TextView errorTextView = findViewById(R.id.errorTextView);
-                    errorTextView.setVisibility(View.VISIBLE);
-                    errorTextView.setText("Error al procesar la respuesta del servidor.");
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            TextView errorTextView = findViewById(R.id.errorTextView);
+                            errorTextView.setVisibility(View.VISIBLE);
+                            errorTextView.setText("Error al procesar la respuesta del servidor.");
+                        }
+                    });
                 }
             }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -265,20 +283,22 @@ public class RegistrarUsuario extends AppCompatActivity {
         return verif == calculatedVerif;
     }
 
-    public boolean validarNombreApellido(String texto, TextView errorTextView) {
-        String regex = "^[a-zA-Z]+( [a-zA-Z]+)?$";
+    public boolean validarNombreApellido(EditText editText, String errorMessage) {
+        String texto = editText.getText().toString().trim();;
+        String regex = "^[a-zA-Z]+( [a-zA-Z]+)*$";
+
+        TextView errorTextView = editText.getRootView().findViewById(R.id.errorTextView);
 
         if (!texto.matches(regex)) {
-            errorTextView = findViewById(R.id.errorTextView);
             errorTextView.setVisibility(View.VISIBLE);
-            errorTextView.setText("Ingrese solo letras en los campos de nombres y apellidos");
+            errorTextView.setText(errorMessage);
             return false;
+        } else {
+            errorTextView.setVisibility(View.GONE);
         }
 
-        errorTextView.setVisibility(View.GONE);
         return true;
     }
-
     public boolean validarCorreo() {
         String correoText = correo.getText().toString().trim();
 
