@@ -11,8 +11,8 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="6dp"
-        android:layout_y="438dp"
+        android:layout_x="4dp"
+        android:layout_y="429dp"
         android:text="Número de serie"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -46,8 +46,8 @@
         android:layout_marginTop="3dp"
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="683dp"
-        android:layout_x="282dp"
-        android:layout_y="4dp"
+        android:layout_x="276dp"
+        android:layout_y="2dp"
         android:backgroundTint="#1CA622"
         android:onClick="Finalizar"
         android:text="Regresar"
@@ -70,31 +70,33 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="21dp"
-        android:layout_y="347dp"
+        android:layout_x="33dp"
+        android:layout_y="337dp"
         android:text="Prestamista"
         android:textSize="20sp"
         android:textStyle="bold" />
 
     <EditText
         android:id="@+id/txtCedulaDev"
-        android:layout_width="wrap_content"
+        android:layout_width="162dp"
         android:layout_height="wrap_content"
-        android:layout_x="166dp"
-        android:layout_y="329dp"
+        android:layout_x="173dp"
+        android:layout_y="327dp"
         android:ems="10"
+        android:enabled="false"
         android:hint="Cédula"
-        android:inputType="text" />
+        android:inputType="none" />
 
     <EditText
         android:id="@+id/txtSerieDev"
-        android:layout_width="wrap_content"
+        android:layout_width="161dp"
         android:layout_height="wrap_content"
-        android:layout_x="171dp"
-        android:layout_y="422dp"
+        android:layout_x="170dp"
+        android:layout_y="418dp"
         android:ems="10"
+        android:enabled="false"
         android:hint="serie"
-        android:inputType="text" />
+        android:inputType="none" />
 
     <Button
         android:id="@+id/btnDevolverDev"

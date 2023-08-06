@@ -9,40 +9,43 @@
 
     <EditText
         android:id="@+id/txtMarca"
-        android:layout_width="193dp"
+        android:layout_width="149dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="505dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginTop="548dp"
+        android:layout_marginEnd="37dp"
         android:ems="10"
+        android:enabled="false"
         android:hint="Marca"
-        android:inputType="text" />
+        android:inputType="none" />
 
     <EditText
         android:id="@+id/txtRam"
-        android:layout_width="193dp"
+        android:layout_width="121dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="384dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginTop="436dp"
+        android:layout_marginEnd="59dp"
         android:ems="10"
+        android:enabled="false"
         android:hint="Ram"
-        android:inputType="text" />
+        android:inputType="none" />
 
     <EditText
         android:id="@+id/txtAlmacenamiento"
-        android:layout_width="193dp"
+        android:layout_width="146dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="446dp"
-        android:layout_marginEnd="29dp"
+        android:layout_marginTop="492dp"
+        android:layout_marginEnd="36dp"
         android:ems="10"
+        android:enabled="false"
         android:hint="Almacenamiento"
-        android:inputType="text" />
+        android:inputType="none" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -59,39 +62,41 @@
 
     <EditText
         android:id="@+id/txtSerie"
-        android:layout_width="wrap_content"
+        android:layout_width="143dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="229dp"
-        android:layout_marginEnd="-1dp"
+        android:layout_marginTop="274dp"
+        android:layout_marginEnd="26dp"
         android:ems="10"
+        android:enabled="false"
         android:hint="serie"
-        android:inputType="text" />
+        android:inputType="none" />
 
     <TextView
         android:id="@+id/t"
-        android:layout_width="219dp"
-        android:layout_height="33dp"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="85dp"
         android:layout_marginTop="171dp"
         android:text="Realizar su prestamo"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="184dp"
+        android:layout_width="162dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="239dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="286dp"
         android:text="Número de serie"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView6"
@@ -100,10 +105,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="117dp"
-        android:layout_marginTop="287dp"
+        android:layout_marginStart="114dp"
+        android:layout_marginTop="337dp"
         android:text="Componentes"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
@@ -112,10 +117,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="398dp"
+        android:layout_marginStart="103dp"
+        android:layout_marginTop="445dp"
         android:text="Ram"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView8"
@@ -124,10 +130,11 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="415dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginBottom="324dp"
         android:text="Sistema operativo"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView9"
@@ -135,10 +142,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="296dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="209dp"
         android:text="Almacenamiento"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView10"
@@ -146,22 +154,25 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="54dp"
-        android:layout_marginBottom="237dp"
+        android:layout_marginStart="99dp"
+        android:layout_marginBottom="146dp"
         android:text="Marca"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/txtSO"
-        android:layout_width="193dp"
+        android:layout_width="158dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="326dp"
-        android:layout_marginEnd="30dp"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="377dp"
+        android:layout_marginEnd="21dp"
         android:ems="10"
+        android:enabled="false"
         android:hint="so"
-        android:inputType="text" />
+        android:inputType="none" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -174,25 +185,16 @@
 
     <Button
         android:id="@+id/btnPedir"
-        android:layout_width="167dp"
-        android:layout_height="wrap_content"
+        android:layout_width="267dp"
+        android:layout_height="58dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="108dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="67dp"
+        android:layout_marginBottom="52dp"
         android:backgroundTint="#289E2D"
-        android:text="Pedir" />
-
-    <Button
-        android:id="@+id/btnDevolver"
-        android:layout_width="167dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="215dp"
-        android:layout_marginBottom="106dp"
-        android:backgroundTint="#885F52"
-        android:text="Devolver" />
+        android:text="Pedir"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/btn_Regresar3"
@@ -206,14 +208,29 @@
 
     <EditText
         android:id="@+id/txt_cedulaP"
+        android:layout_width="177dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="192dp"
+        android:layout_marginTop="219dp"
+        android:layout_marginEnd="24dp"
+        android:editable="false"
+        android:ems="10"
+        android:hint="cedula"
+        android:inputType="none" />
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="182dp"
-        android:ems="10"
-        android:hint="cedula"
-        android:inputType="text" />
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="228dp"
+        android:text="Usuario"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

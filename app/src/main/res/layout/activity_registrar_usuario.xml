@@ -9,14 +9,14 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="116dp"
-        android:layout_height="47dp"
+        android:layout_width="wrap_content"
+        android:layout_height="51dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="3dp"
+        android:layout_marginStart="1dp"
         android:layout_marginTop="4dp"
-        android:layout_marginBottom="674dp"
+        android:layout_marginBottom="683dp"
         android:backgroundTint="#2439AE"
         android:onClick="finalizar"
         android:text="Regresar"
@@ -74,22 +74,6 @@
         android:hint="Apellidos"
         android:inputType="text" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="127dp"
-        android:layout_marginTop="89dp"
-        android:text="SERVICOM"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="32dp" />
-
     <EditText
         android:id="@+id/txt_cedula"
         android:layout_width="match_parent"
@@ -120,22 +104,29 @@
 
     <Button
         android:id="@+id/btn_guardar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="265dp"
+        android:layout_height="60dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="138dp"
-        android:layout_marginBottom="118dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="59dp"
+        android:layout_marginBottom="62dp"
         android:backgroundTint="#1A611C"
         android:text="Registrar usuario"
+        android:textSize="20sp"
         app:cornerRadius="15dp" />
+
     <TextView
         android:id="@+id/errorTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone"
-        android:textColor="@android:color/black" />
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="100dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:background="@drawable/error_textview_background"
+        android:padding="8dp"
+        android:visibility="gone" />
 
     <EditText
         android:id="@+id/txt_nombres"
@@ -149,6 +140,16 @@
         android:hint="Nombres"
         android:inputType="text" />
 
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="208dp"
+        android:layout_height="114dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="53dp"
+        app:srcCompat="@drawable/logo" />
 
 
 </RelativeLayout>

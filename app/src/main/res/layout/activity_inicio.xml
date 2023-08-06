@@ -9,39 +9,40 @@
 
     <Button
         android:id="@+id/btnDev"
-        android:layout_width="343dp"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="62dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="439dp"
-        android:layout_marginEnd="18dp"
-        android:backgroundTint="#2D3D98"
+        android:layout_marginTop="475dp"
+        android:layout_marginEnd="7dp"
+        android:backgroundTint="#FF116515"
         android:text="Devolución"
         android:textSize="20sp" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
-        android:layout_height="145dp"
+        android:layout_height="177dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="-1dp"
-        android:layout_marginTop="99dp"
-        android:layout_marginEnd="2dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="127dp"
+        android:layout_marginEnd="19dp"
         app:srcCompat="@drawable/logo" />
 
     <Button
         android:id="@+id/btnSoli"
-        android:layout_width="343dp"
-        android:layout_height="wrap_content"
+        android:layout_width="359dp"
+        android:layout_height="64dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="359dp"
-        android:layout_marginEnd="20dp"
-        android:backgroundTint="#2D3D98"
-        android:text="Solicitar prestamo"
+        android:layout_marginEnd="5dp"
+        android:backgroundTint="#116515"
+        android:text="Solicitar préstamo"
         android:textSize="20sp" />
 </RelativeLayout>

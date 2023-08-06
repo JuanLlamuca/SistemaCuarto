@@ -72,23 +72,38 @@ public class Login extends AppCompatActivity {
                 if (!response.isEmpty()) {
                     try {
                         JSONObject jsonObject = new JSONObject(response);
-                        String cedulaUsuario = jsonObject.getString("per_cedula");
-                        Toast.makeText(Login.this, "Cédula del usuario: " + cedulaUsuario, Toast.LENGTH_LONG).show();
+                        String status = jsonObject.getString("status");
+                        String message = jsonObject.getString("message");
 
+                        if (status.equals("success")) {
+                            String cedulaUsuario = jsonObject.getString("per_cedula");
+                            Toast.makeText(Login.this, "Cédula del usuario: " + cedulaUsuario, Toast.LENGTH_LONG).show();
 
-                        SharedPreferences sharedPreferences = getSharedPreferences("MiPrefs", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("cedula_usuario", cedulaUsuario);
-                        editor.apply();
+                            // Guardar la cédula del usuario en SharedPreferences
+                            SharedPreferences sharedPreferences = getSharedPreferences("MiPrefs", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("cedula_usuario", cedulaUsuario);
+                            editor.apply();
 
-                        Intent intent = new Intent(Login.this, Inicio.class);
-                        startActivity(intent);
+                            // Iniciar la actividad Inicio
+                            Intent intent = new Intent(Login.this, Inicio.class);
+                            startActivity(intent);
+                        } else if (status.equals("error")) {
+                            // Mostrar mensaje de error según el mensaje recibido del servidor
+                            if (message.equals("Credenciales inválidas.")) {
+                                Toast.makeText(Login.this, "Usuario y/o clave incorrectos", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(Login.this, message, Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(Login.this, "Respuesta desconocida del servidor", Toast.LENGTH_SHORT).show();
+                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                         Toast.makeText(Login.this, "Error en la respuesta del servidor", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(Login.this, "Correo o clave incorrectos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Respuesta vacía del servidor", Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {

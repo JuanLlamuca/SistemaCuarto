@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,6 +31,8 @@ public class Principal extends AppCompatActivity {
      ListView listView;
     Adaptador adaptador;
     public static ArrayList<Computadora>computadoras=new ArrayList<>();
+    private Handler handler = new Handler();
+    private Runnable runnable;
 
     String url="https://prestamocomputadora.000webhostapp.com/pruebasoap/mostrar.php";
 
@@ -43,7 +46,9 @@ public class Principal extends AppCompatActivity {
         adaptador=new Adaptador(this,computadoras);
         listView.setAdapter(adaptador);
         Log.d("Punto de control", "El método mostrarDatos() se llamó desde onCreate()");
+
         mostrarDatos();
+        actualizarDatosCadaCincoSegundos();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -51,6 +56,7 @@ public class Principal extends AppCompatActivity {
 
                 Computadora computadoraSeleccionada = computadoras.get(position);
                 String numeroSerie = computadoraSeleccionada.getCom_serie();
+
 
                 SharedPreferences sharedPreferences = getSharedPreferences("MiPrefs", Context.MODE_PRIVATE);
                 String cedulaUsuario = sharedPreferences.getString("cedula_usuario", "");
@@ -89,11 +95,12 @@ public class Principal extends AppCompatActivity {
                             computadoras.add(compu);
                             adaptador.notifyDataSetChanged();
                         }
+                        Log.d("Datos recibidos", "Cantidad de computadoras: " + computadoras.size());
+                    }else {
+
+                        // Punto de control 2: Verificar si los datos se recibieron correctamente y la cantidad de computadoras
+                        Toast.makeText(Principal.this, "No existen computadoras disponibles.", Toast.LENGTH_SHORT).show();
                     }
-
-                    // Punto de control 2: Verificar si los datos se recibieron correctamente y la cantidad de computadoras
-                    Log.d("Datos recibidos", "Cantidad de computadoras: " + computadoras.size());
-
                 }catch (JSONException e){
                     e.printStackTrace();
                 }
@@ -107,6 +114,17 @@ public class Principal extends AppCompatActivity {
 
         RequestQueue requestQueue=Volley.newRequestQueue(this);
         requestQueue.add(request);
+    }
+    private void actualizarDatosCadaCincoSegundos() {
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                mostrarDatos();
+                handler.postDelayed(this, 5000); // Repetir cada 5 segundos (5000 milisegundos)
+            }
+        };
+
+        handler.postDelayed(runnable, 5000); // Inicializar la repetición después de 5 segundos
     }
 
 

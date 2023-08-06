@@ -8,21 +8,21 @@
     android:backgroundTint="#A9CDCA"
     tools:context=".Login">
 
+
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="391dp"
-        android:layout_height="233dp"
+        android:layout_width="344dp"
+        android:layout_height="162dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="47dp"
-        android:layout_x="-1dp"
-        android:layout_y="61dp"
+        android:layout_x="7dp"
+        android:layout_y="156dp"
         app:layout_constraintBottom_toTopOf="@+id/txtu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.885"
         app:srcCompat="@drawable/logo" />
-
 
     <EditText
         android:id="@+id/txtu"
@@ -31,8 +31,8 @@
         android:layout_marginStart="83dp"
         android:layout_marginEnd="56dp"
         android:layout_marginBottom="16dp"
-        android:layout_x="69dp"
-        android:layout_y="327dp"
+        android:layout_x="53dp"
+        android:layout_y="331dp"
         android:ems="10"
         android:hint="Ingrese su usuario"
         android:inputType="text"
@@ -50,28 +50,13 @@
         android:layout_marginStart="83dp"
         android:layout_marginEnd="57dp"
         android:layout_marginBottom="37dp"
-        android:layout_x="70dp"
-        android:layout_y="420dp"
+        android:layout_x="54dp"
+        android:layout_y="421dp"
         android:ems="10"
         android:hint="Ingrese su clave"
         android:inputType="textPassword"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_lg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btn_lg"
-        android:layout_width="219dp"
-        android:layout_height="58dp"
-        android:layout_marginBottom="173dp"
-        android:layout_x="98dp"
-        android:layout_y="526dp"
-        android:background="#358738"
-        android:backgroundTint="#39A13E"
-        android:text="Iniciar sesión"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -82,7 +67,7 @@
         android:layout_marginStart="1dp"
         android:layout_marginEnd="305dp"
         android:layout_marginBottom="4dp"
-        android:layout_x="286dp"
+        android:layout_x="256dp"
         android:layout_y="0dp"
         android:backgroundTint="#3247B6"
         android:onClick="finalizar"
@@ -90,5 +75,16 @@
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_lg"
+        android:layout_width="290dp"
+        android:layout_height="59dp"
+        android:layout_x="43dp"
+        android:layout_y="531dp"
+        android:backgroundTint="#267829"
+        android:text="Iniciar sesión"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 </AbsoluteLayout>

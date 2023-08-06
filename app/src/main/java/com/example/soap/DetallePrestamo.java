@@ -40,7 +40,7 @@ public class DetallePrestamo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_prestamo);
-        btb_devolver=findViewById(R.id.btnDevolver);
+
         btn_pedir=findViewById(R.id.btnPedir);
         numeroSerie = getIntent().getStringExtra("NUMERO_SERIE");
         com_serie = findViewById(R.id.txtSerie);
@@ -57,12 +57,12 @@ public class DetallePrestamo extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        // Verificar si contiene el extra "cedula_usuario"
+
         if (intent.hasExtra("cedula_usuario")) {
-            // Obtener la cédula del extra
+
             String cedulaUsuario = intent.getStringExtra("cedula_usuario");
 
-            // Buscar el campo EditText en el diseño y establecer el valor de la cédula
+
             cdu = findViewById(R.id.txt_cedulaP);
             cdu.setText(cedulaUsuario);
         }
