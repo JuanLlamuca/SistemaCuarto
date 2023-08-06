@@ -36,6 +36,7 @@ public class Inicio extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Inicio.this, Devolucion.class);
+                intent.putExtra("cedula_usuario", cedulaUsuario);
                 startActivity(intent);
             }
         });

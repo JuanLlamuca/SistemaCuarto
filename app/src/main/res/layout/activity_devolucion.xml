@@ -7,12 +7,22 @@
     android:background="#C3D32B"
     tools:context=".Devolucion">
 
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="6dp"
+        android:layout_y="438dp"
+        android:text="Número de serie"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="208dp"
         android:layout_height="124dp"
-        android:layout_x="100dp"
-        android:layout_y="14dp"
+        android:layout_x="97dp"
+        android:layout_y="105dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/hp"
@@ -20,9 +30,11 @@
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="104dp"
-        android:layout_height="60dp"
+        android:layout_width="125dp"
+        android:layout_height="81dp"
         android:layout_marginStart="4dp"
+        android:layout_x="0dp"
+        android:layout_y="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/logo"
         tools:layout_editor_absoluteY="4dp" />
@@ -43,4 +55,55 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="95dp"
+        android:layout_y="261dp"
+        android:text="Devolución de la laptop"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="21dp"
+        android:layout_y="347dp"
+        android:text="Prestamista"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/txtCedulaDev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="166dp"
+        android:layout_y="329dp"
+        android:ems="10"
+        android:hint="Cédula"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/txtSerieDev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="171dp"
+        android:layout_y="422dp"
+        android:ems="10"
+        android:hint="serie"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/btnDevolverDev"
+        android:layout_width="286dp"
+        android:layout_height="60dp"
+        android:layout_x="56dp"
+        android:layout_y="530dp"
+        android:backgroundTint="#4051AF"
+        android:text="Devolver"
+        android:textSize="20sp" />
+
 </AbsoluteLayout>

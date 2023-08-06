@@ -52,7 +52,7 @@ public class Login extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null && extras.containsKey("per_cedula")) {
             cedulaUsuario = extras.getString("per_cedula");
-            // Hacer lo que necesites con la cédula del usuario
+
         }
 
 
@@ -72,13 +72,10 @@ public class Login extends AppCompatActivity {
                 if (!response.isEmpty()) {
                     try {
                         JSONObject jsonObject = new JSONObject(response);
-                        // Suponiendo que la clave para la cédula en el JSON de respuesta es "per_cedula"
                         String cedulaUsuario = jsonObject.getString("per_cedula");
-
-                        // Mostrar mensaje Toast con la cédula del usuario
                         Toast.makeText(Login.this, "Cédula del usuario: " + cedulaUsuario, Toast.LENGTH_LONG).show();
 
-                        // Guardar la cédula en SharedPreferences
+
                         SharedPreferences sharedPreferences = getSharedPreferences("MiPrefs", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("cedula_usuario", cedulaUsuario);
