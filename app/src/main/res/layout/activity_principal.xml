@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A9CDCA"
+    android:background="#FFFFFF"
     tools:context=".Principal">
 
     <ListView
         android:id="@+id/myListView"
-        android:layout_width="391dp"
-        android:layout_height="617dp"
+        android:layout_width="387dp"
+        android:layout_height="678dp"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,8 +19,8 @@
 
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="238dp"
-        android:layout_height="115dp"
+        android:layout_width="204dp"
+        android:layout_height="56dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"

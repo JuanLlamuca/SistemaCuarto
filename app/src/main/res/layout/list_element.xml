@@ -5,11 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
-    android:background="#000000"
-    android:backgroundTint="#FBF2F2"
     app:cardCornerRadius="20dp"
-    app:cardElevation="4dp"
-    app:cardUseCompatPadding="true">
+    app:cardElevation="8dp"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="#FBF2F2">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,8 +31,7 @@
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
                 android:paddingRight="14dp"
-                app:srcCompat="@drawable/imagen" />
-
+                app:srcCompat="@drawable/logos2" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -79,9 +77,6 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-
         </RelativeLayout>
     </LinearLayout>
-
-
 </androidx.cardview.widget.CardView>
