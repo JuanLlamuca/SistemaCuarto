@@ -1,5 +1,6 @@
 package com.example.soap;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,11 +9,13 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +28,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.safetynet.SafetyNet;
+import com.google.android.gms.safetynet.SafetyNetApi;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,13 +40,17 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Login extends AppCompatActivity {
+public class Login extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks {
 
 
+    CheckBox checkBox;
     public String cedulaUsuario;
+    GoogleApiClient googleApiClient;
 
     EditText et_correo, et_clave;
     Button Btnlog;
+    String SiteKey="6LecK5QnAAAAACr-aVen7Xk66x6T1GnWcD1zBoTz";
+    boolean isHumanVerified = false;
 
 
     @Override
@@ -48,6 +60,8 @@ public class Login extends AppCompatActivity {
         Btnlog=findViewById(R.id.btn_lg);
         et_correo=findViewById(R.id.txtu);
         et_clave=findViewById(R.id.txtc);
+        checkBox=findViewById(R.id.CheckBox_Id);
+
 
         Bundle extras = getIntent().getExtras();
         if (extras != null && extras.containsKey("per_cedula")) {
@@ -55,12 +69,61 @@ public class Login extends AppCompatActivity {
 
         }
 
+        googleApiClient =new GoogleApiClient.Builder(this)
+                .addApi(SafetyNet.API)
+                        .addConnectionCallbacks(Login.this)
+                                .build();
+        googleApiClient.connect();
 
-        Btnlog.setOnClickListener(new View.OnClickListener(){
+
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                validarUsuario("https://prestamocomputadora.000webhostapp.com/pruebasoap/login.php");
+                if (checkBox.isChecked()) {
+                    SafetyNet.SafetyNetApi.verifyWithRecaptcha(googleApiClient, SiteKey).setResultCallback(new ResultCallback<SafetyNetApi.RecaptchaTokenResult>() {
+                        @Override
+                        public void onResult(@NonNull SafetyNetApi.RecaptchaTokenResult recaptchaTokenResult) {
+                            Status status = recaptchaTokenResult.getStatus();
+                            if (status != null && status.isSuccess()) {
+                                Toast.makeText(Login.this, "Verificación correcta", Toast.LENGTH_SHORT).show();
+                                checkBox.setTextColor(Color.BLUE);
+                                isHumanVerified = true;
+                            } else {
+                                checkBox.setTextColor(Color.RED);
+                                Toast.makeText(Login.this, "La verificación falló", Toast.LENGTH_SHORT).show();
+                                isHumanVerified = false;
+                            }
+                        }
+                    });
+                } else {
+                    checkBox.setTextColor(Color.BLACK); // Restaurar color original del texto
+                    isHumanVerified = false;
+                }
             }
         });
+
+        Btnlog.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (isHumanVerified) {
+                    validarUsuario("https://prestamocomputadora.000webhostapp.com/pruebasoap/login.php");
+                } else {
+                    Toast.makeText(Login.this, "Verifica primero que eres un humano", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
     }
 
 
@@ -133,4 +196,5 @@ public class Login extends AppCompatActivity {
     public void finalizar(View v){
         this.finish();
     }
+
 }
